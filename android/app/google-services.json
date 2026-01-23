@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "77730487546",
+    "project_id": "tarea03pmdm",
+    "storage_bucket": "tarea03pmdm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77730487546:android:fc6eba150442d5cc087d43",
+        "android_client_info": {
+          "package_name": "com.example.pmdm_2526_t03"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlSJR3NMUfa7cuF_AdW2x1tiB8noDq2rI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
