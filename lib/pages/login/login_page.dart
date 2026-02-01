@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import '../../utils/snackbar.dart';
-import '../../utils/keyboard.dart';
+import '../../../utils/snackbar.dart';
+import '../../../utils/keyboard.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,14 +16,13 @@ class _LoginPageState extends State<LoginPage> {
   String? _email;
   String? _password;
   User? _user;
-  UserCredential? _userCredential;
 
   @override
   void initState() {
     super.initState();
   }
 
-  // --- Login con email y contraseña ---
+
   Future<void> _login() async {
     if (_formKey.currentState?.validate() != true) return;
     _formKey.currentState!.save();
@@ -56,12 +55,12 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  // Registro
+
   void _goToRegister() {
     context.pushNamed('register');
   }
 
-  // Continuar sin iniciar sesión (anónimo)
+
   Future<void> _continueAnonymously() async {
     if (_user != null) {
       showSnackBar(context, 'Ya hay usuario autenticado');
@@ -86,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  // Restablecer contraseña
+
   Future<void> _resetPassword() async {
     if (_formKey.currentState?.validate() != true) return;
     _formKey.currentState!.save();
@@ -109,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            //Formulario
+
             Form(
               key: _formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -146,16 +145,13 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-
-            const SizedBox(height: 16),
-
-            //continuar sin iniciar sesion
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
+                const SizedBox(height: 16),
+                ElevatedButton(
+                style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueGrey[150],
               ),
-              onPressed: _continueAnonymously,
-              child: const Text('Continuar sin iniciar sesión'),
+                  onPressed: _continueAnonymously,
+                  child: const Text('Continuar sin iniciar sesión'),
             ),
           ],
         ),

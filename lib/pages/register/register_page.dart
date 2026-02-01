@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String? _email;
   String? _password;
 
-  /// Crear cuenta
+
   Future<void> _createAccount() async {
     if (_formKey.currentState?.validate() != true) return;
     _formKey.currentState!.save();
@@ -27,10 +27,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
       final user = userCredential.user;
       if (user != null) {
-        // Enviar email de verificación
+
         await user.sendEmailVerification();
 
-        // Redirigir a home (el usuario puede estar logueado aunque no verifique)
+
         context.goNamed('home');
 
         showSnackBar(context, 'Cuenta creada. Se ha enviado un correo de verificación.',
@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  /// Ir a LoginPage
+
   void _goToLogin() {
     context.goNamed('login');
   }
@@ -58,7 +58,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-          // Mostrar diálogo de confirmación
           final shouldLeave = await showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
@@ -66,11 +65,11 @@ class _RegisterPageState extends State<RegisterPage> {
               content: const Text('¿Estás seguro de que quieres salir?'),
               actions: [
                 TextButton(
-                  onPressed: () => Navigator.of(context).pop(false), // No salir
+                  onPressed: () => Navigator.of(context).pop(false),
                   child: const Text('Cancelar'),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.of(context).pop(true), // Salir
+                  onPressed: () => Navigator.of(context).pop(true),
                   child: const Text('Salir'),
                 ),
               ],
@@ -89,7 +88,6 @@ class _RegisterPageState extends State<RegisterPage> {
               key: _formKey,
               child: Column(
                 children: [
-                  // Correo electrónico
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Correo electrónico'),
                     keyboardType: TextInputType.emailAddress,
@@ -97,19 +95,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     onSaved: (v) => _email = v,
                   ),
                   const SizedBox(height: 8),
-                  // Contraseña
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Contraseña'),
                     obscureText: true,
                     onSaved: (v) => _password = v,
                   ),
                   const SizedBox(height: 16),
-                  // Botón Crear
                   ElevatedButton(
                     onPressed: _createAccount,
                     child: const Text('Crear'),
                   ),
-                  // Botón ir a Login
                   ElevatedButton(
                     onPressed: _goToLogin,
                     child: const Text('Iniciar sesión'),

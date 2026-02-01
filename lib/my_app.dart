@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'pages/login_page.dart';
+import 'pages/login/login_page.dart';
 import 'pages/register/register_page.dart';
-import 'pages/home_page.dart';
-
+import 'pages/home/home_page.dart';
+import 'pages/profile/profile_page.dart';
 
 
 
@@ -29,7 +29,12 @@ class _MyAppState extends State<MyApp> {
           name: 'home',
           path: '/',
           builder: (context, state) => const HomePage(),
-        ),
+      ),
+        GoRoute(
+          name: 'profile',
+          path: '/profile',
+          builder: (context, state) => const ProfilePage(),
+            ),
         GoRoute(
           name: 'login',
           path: '/login',
@@ -49,7 +54,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.deepPurple.shade400,
+          foregroundColor: Colors.white,
+          elevation: 2,
+        ),
+        useMaterial3: true,
       ),
       routerConfig: _router,
     );
